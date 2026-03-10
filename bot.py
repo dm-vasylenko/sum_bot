@@ -32,11 +32,15 @@ async def handle_message(update: Update, context: ContextTypes.DEFAULT_TYPE):
 
 async def reset_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     global total_sum
+    if not update.message:
+        return
     total_sum = 0.0
     await update.message.reply_text("✅ Сумма сброшена до 0.")
 
 async def set_command(update: Update, context: ContextTypes.DEFAULT_TYPE):
     global total_sum
+    if not update.message:
+        return
     if not context.args:
         await update.message.reply_text("Использование: /set 100,50")
         return
